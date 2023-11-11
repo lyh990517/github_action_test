@@ -24,6 +24,14 @@ jobs:
       run: chmod +x gradlew
     - name: Clean Bulid
       run: ./gradlew clean
+    - name: Run ktlint
+      run: ./gradlew ktlintCheck
+    - name: Run detekt
+      run: ./gradlew detekt
+    - name: Run Unit Test
+      run: ./gradlew test
+    - name: Run Android Test
+      run: ./gradlew connectedAndroidTest
     - name: Assemble
       run: ./gradlew assemble
       
@@ -37,5 +45,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: release
-       path: ./app/build/outputs/apk/debug/app-release-unsigned.apk
+       path: ./app/build/outputs/apk/release/app-release-unsigned.apk
 
